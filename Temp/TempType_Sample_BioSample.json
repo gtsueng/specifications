@@ -549,7 +549,7 @@
       "@id": "bioschemastemptype:isControl",
       "@type": "rdf:Property",
       "rdfs:comment": "Indicates whether the sample is being used as a normal control, may be in combination with another sample.",
-      "rdfs:label": "iscontrol",
+      "rdfs:label": "isControl",
       "schema:domainIncludes": {"@id": "bioschemastemptype:Sample"},
       "schema:rangeIncludes": [
         {
