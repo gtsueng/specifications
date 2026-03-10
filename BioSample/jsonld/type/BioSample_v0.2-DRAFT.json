@@ -27,7 +27,7 @@
     {
       "@id": "bioschemastypesdrafts:scientificName",
       "@type": "rdf:Property",
-      "rdfs:comment": "The full scientific name (order, family, subfamily,  genus,specificEpithet).",
+      "rdfs:comment": "The full scientific name (order, family, subfamily, genus, specific Epithet).",
       "rdfs:label": "scientificName",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
       "schema:rangeIncludes": [
@@ -108,6 +108,45 @@
         },
         {
           "@id": "schema:DefinedTerm"
+        }    
+      ]
+    },
+    {
+      "@id": "bioschemastypesdrafts:cellType",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The cell line, lineage or biological/taxonomic classification of a cell.",
+      "rdfs:label": "cellType",
+      "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"
+        },
+        {
+          "@id": "schema:DefinedTerm"
+        }    
+      ]
+    },
+    {
+      "@id": "bioschemastypesdrafts:associatedPhenotype",
+      "@type": "rdf:Property",
+      "rdfs:comment": "The relevant defining characteristic(s) expressed by the biological source of a typical sample, usually physical.",
+      "rdfs:label": "associatedPhenotype",
+      "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
+      "schema:rangeIncludes": [
+        {
+          "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:QuantitativeValue"
+        },
+        {
+          "@id": "schema:DefinedTerm"
+        },
+        {
+          "@id": "bioschemastypesdrafts:Phenotype"
         }    
       ]
     }
