@@ -56,6 +56,12 @@
       "schema:rangeIncludes": [
         {
           "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"    
+        },
+        { 
+          "@id": "schema:DefinedTerm"
         }
       ]
     },
@@ -77,7 +83,7 @@
     {
       "@id": "bioschemastypesdrafts:datePublished",
       "@type": "rdf:Property",
-      "rdfs:comment": "The date when the  record of the sample will be made publicly available.",
+      "rdfs:comment": "The date when the record of the sample will be made publicly available.",
       "rdfs:label": "datePublished",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -296,7 +302,7 @@
     {
       "@id": "bioschemastypesdrafts:itemLocation",
       "@type": "rdf:Property",
-      "rdfs:comment": "Current location of the item.",
+      "rdfs:comment": "Current location of the sample.",
       "rdfs:label": "itemLocation",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -338,7 +344,7 @@
     {
       "@id": "bioschemastypesdrafts:sampleType",
       "@type": "rdf:Property",
-      "rdfs:comment": "Indicate the type of sample",
+      "rdfs:comment": "Indicate the type of sample. Note that this is intentionally broad to allow different types of specimens, i.e. cells, rock, sand.",
       "rdfs:label": "sampleType",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -361,19 +367,22 @@
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
         {
-          "@id": "schema:QualitativeValue"
+          "@id": "schema:QuantitativeValue"
         }
       ]
     },
     {
       "@id": "bioschemastypesdrafts:sampleProcess",
       "@type": "rdf:Property",
-      "rdfs:comment": "The processing technique that was applied to the sample, methods used to prepare the samples.",
+      "rdfs:comment": "The processing technique that was applied to the sample, methods used to prepare the samples, including SOPs (Standard Operating Procedures).",
       "rdfs:label": "sampleProcess",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
         {
           "@id": "schema:Text"
+        },
+        {
+          "@id": "schema:URL"
         }
       ]
     },
@@ -503,7 +512,7 @@
     {
       "@id": "bioschemastypesdrafts:hasPart",
       "@type": "rdf:Property",
-      "rdfs:comment": "Describe related items including other resources related to the samples.",
+      "rdfs:comment": "Describe related items including other resources related to the samples. For example a subsample of this sample.",
       "rdfs:label": "hasPart",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -527,7 +536,7 @@
     {
       "@id": "bioschemastypesdrafts:isPartOf",
       "@type": "rdf:Property",
-      "rdfs:comment": "Describe related items including other resources related to the samples.",
+      "rdfs:comment": "Describe related items including other resources related to the samples. For example a supersample of this sample.",
       "rdfs:label": "isPartOf",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
