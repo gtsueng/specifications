@@ -26,47 +26,359 @@
         "properties": {
           "parameterValue": {
             "description": "A parameter value of the experimental process, usually a key-value pair using ontology terms.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [  
+              {
+                "@type": "PropertyValue",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "propertyID": { 
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "valueReference": {
+                    "oneOf": [
+                      {
+                        "@type": "DefinedTerm",
+                        "type": "object",
+                        "properties": {
+                          "inDefinedTermSet": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "termcode": {
+                            "type": "string"
+                          },
+                          "sameAs": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "unitCode": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "unitText": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "recommended": [
+                      "name",
+                      "propertyID",
+                      "value",
+                      "valueReference"
+                    ],
+                "optional": [
+                      "unitCode",
+                      "unitText"
+                    ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "PropertyValue",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "propertyID": { 
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "valueReference": {
+                      "oneOf": [
+                        {
+                          "@type": "DefinedTerm",
+                          "type": "object",
+                          "properties": {
+                            "inDefinedTermSet": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "termcode": {
+                              "type": "string"
+                            },
+                            "sameAs": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "unitCode": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "unitText": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "recommended": [
+                    "name",
+                    "propertyID",
+                    "value",
+                    "valueReference"
+                  ],
+                  "optional": [
+                    "unitCode",
+                    "unitText"
+                  ]
+                }
+              }
+            ]
           },
           "executesLabProtocol": {
             "description": "The lab protocol describes the experimental workflow and its parameters, which is instantiated by this process.",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "anyOf": [
+              {
+                "$ref": "#/definitions/protocol"
+              },
+              {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/protocol"
+                }
+              }
+            ]
           },
           "agent": {
             "description": "The direct performer or driver of the action (animate or inanimate). e.g. *John* wrote a book.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "anyOf": [
+              {
+                "$ref": "#/definitions/organization"
+              },
+              {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/organization"
+                }
+              },
+              {
+                "$ref": "#/definitions/person"
+              },
+              {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/person"
+                }
+              }
+            ]
           },
           "endTime": {
             "description": "The endTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to end. For actions that span a period of time, when the action was performed. e.g. John wrote a book from January to *December*. For media, including audio and video, it's the time offset of the end of a clip within a larger file.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "oneOf": [
+              {            
+                "format": "date-time",
+                "type": "string"
+              },
+              {            
+                "format": "time",
+                "type": "string"
+              }
+            ]
           },
           "instrument": {
             "description": "The object that helped the agent perform the action. e.g. John wrote a book with *a pen*.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "@type": "Thing",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Thing",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            ]
           },
           "object": {
             "description": "The object upon which the action is carried out, whose state is kept intact or changed. Also known as the semantic roles patient, affected or undergoer (which change their state) or theme (which doesn't). e.g. John read *a book*.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "@type": "Thing",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Thing",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            ]
           },
           "result": {
             "description": "The result produced in the action. e.g. John wrote *a book*.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [
+              {
+                "@type": "Thing",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": []
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "Thing",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    }
+                  },
+                  "required": []
+                }
+              }
+            ]
           },
           "startTime": {
             "description": "The startTime of something. For a reserved event or service (e.g. FoodEstablishmentReservation), the time that it is expected to start. For actions that span a period of time, when the action was performed. e.g. John wrote a book from *January* to December. For media, including audio and video, it's the time offset of the start of a clip within a larger file.\\n\\nNote that Event uses startDate/endDate instead of startTime/endTime, even when describing dates with times. This situation may be clarified in future revisions.",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "oneOf": [
+              {            
+                "format": "date-time",
+                "type": "string"
+              },
+              {            
+                "format": "time",
+                "type": "string"
+              }
+            ]
           },
           "description": {
             "description": "A description of the item.",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "type": "string"
           },
           "disambiguatingDescription": {
             "description": "A sub property of description. A short description of the item used to disambiguate from other, similar items. Information from other properties (in particular, name) may be necessary for the description to be useful for disambiguation.",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [
+              {            
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
           },
           "name": {
             "description": "The name of the item.",
-            "owl:cardinality": "one"
+            "owl:cardinality": "one",
+            "type": "string"
           }
         },
         "required": [
@@ -86,6 +398,66 @@
           "description",
           "disambiguatingDescription"
         ]
+      },
+      "definitions": {
+        "person": {
+          "@type": "Person",
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "alternateName": {
+              "type": "string"
+            },
+            "givenName": {
+              "type": "string"
+            },
+            "familyName": {
+              "type": "string"
+            },
+            "identifier": {
+              "type": "string"
+            },
+            "affiliation": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/organization"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/organization"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "organization": {
+          "@type": "Organization",
+          "type": "object",
+          "properties": {
+            "name": {
+                "type": "string"
+            },
+            "alternateName": {
+                "type": "string"
+            },
+            "identifier": {
+                "type": "string"
+            }
+          }
+        },
+        "protocol": {
+          "@type": "bioschemastypesdrafts:LabProtocol",
+          "type": "object",
+          "properties": {
+            "name": {
+                "type": "string"
+            }
+          }
+        }
       },
       "schemaVersion": [
         "https://schema.org/docs/releases.html#v29.4"
