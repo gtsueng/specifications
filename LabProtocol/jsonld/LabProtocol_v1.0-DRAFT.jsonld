@@ -30,7 +30,180 @@
         "properties": {
           "parameter": {
             "description": "A structured description of a condition to be specified in the execution of this LabProtocol. This includes physical quantities that can be set for steps of this LabProtocol, such as temperature or time. Ideally given with a reference to an ontology (propertyID).",
-            "owl:cardinality": "many"
+            "owl:cardinality": "many",
+            "oneOf": [  
+              {
+                "@type": "PropertyValue",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "number"
+                      }
+                    ]
+                  },
+                  "propertyID": { 
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "valueReference": {
+                    "oneOf": [
+                      {
+                        "@type": "DefinedTerm",
+                        "type": "object",
+                        "properties": {
+                          "inDefinedTermSet": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "termcode": {
+                            "type": "string"
+                          },
+                          "sameAs": {
+                            "type": "string",
+                            "format": "uri"
+                          }
+                        }
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ]
+                  },
+                  "unitCode": {
+                    "oneOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "string",
+                        "format": "uri"
+                      }
+                    ]
+                  },
+                  "unitText": {
+                    "type": "string"
+                  }
+                },
+                "required": [],
+                "recommended": [
+                      "name",
+                      "propertyID",
+                      "value",
+                      "valueReference"
+                    ],
+                "optional": [
+                      "unitCode",
+                      "unitText"
+                    ]
+              },
+              {
+                "type": "array",
+                "items": {
+                  "@type": "PropertyValue",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "number"
+                        }
+                      ]
+                    },
+                    "propertyID": { 
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "valueReference": {
+                      "oneOf": [
+                        {
+                          "@type": "DefinedTerm",
+                          "type": "object",
+                          "properties": {
+                            "inDefinedTermSet": {
+                              "type": "string"
+                            },
+                            "name": {
+                              "type": "string"
+                            },
+                            "termcode": {
+                              "type": "string"
+                            },
+                            "sameAs": {
+                              "type": "string",
+                              "format": "uri"
+                            }
+                          }
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "unitCode": {
+                      "oneOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "string",
+                          "format": "uri"
+                        }
+                      ]
+                    },
+                    "unitText": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [],
+                  "recommended": [
+                    "name",
+                    "propertyID",
+                    "value",
+                    "valueReference"
+                  ],
+                  "optional": [
+                    "unitCode",
+                    "unitText"
+                  ]
+                }
+              }
+            ]
           },
           "bioSample": {
             "description": "BioSample used in the protocol. It could be a record in a Dataset describing the sample or a physical object corresponding to the sample or a URL pointing to the type of sample used.",
