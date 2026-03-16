@@ -29,7 +29,7 @@
       "rdfs:comment": "A structured description of a condition to be specified in the execution of this LabProtocol. This includes physical quantities that can be set for steps of this LabProtocol, such as temperature or time. Ideally given with a reference to an ontology (propertyID).",
       "rdfs:label": "parameter",
       "schema:domainIncludes": {
-        "@id": "labprotocolTempForRelease:LabProtocol"
+        "@id": "bioschemastypesdrafts:LabProtocol"
       },
       "schema:rangeIncludes": [
         {
