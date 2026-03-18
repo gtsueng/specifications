@@ -1,0 +1,88 @@
+{
+    "@context": [
+        "http://schema.org/",
+        {
+            "LabProtocol": "https://bioschemas.org/LabProtocol",
+            "LabProcess": "https://bioschemas.org/LabProcess",
+            "executesLabProtocol": "https://bioschemas.org/properties/executesLabProtocol",
+            "parameterValue": "https://bioschemas.org/properties/parameterValue",
+            "additionalProperty": "https://bioschemas.org/properties/additionalProperty",
+            "parameter": "https://bioschemas.org/properties/parameter",
+            "labEquipment": "https://bioschemas.org/properties/labEquipment",
+            "intendedUse": "https://bioschemas.org/properties/intendedUse"
+        }
+    ],
+    "@type": [
+        "LabProcess"
+    ],
+    "name": "Mass Spectrometry",
+    "executesProtocol": {
+        "@type": [
+            "LabProtocol"
+        ],
+        "intendedUse": {
+            "@type": "DefinedTerm",
+            "name": "protein measurement",
+            "termCode": "http://www.ebi.ac.uk/efo/EFO_0004747"
+        },
+        "labEquipment": {
+            "@type": [
+              "DefinedTerm"
+            ],
+            "name": "mass spectrometer",
+            "termCode": "http://purl.obolibrary.org/obo/OBI_0000049"
+        },
+        "parameter": [
+            {
+                "@type": "PropertyValue",
+                "name": "flow rate",
+                "propertyID": "http://purl.obolibrary.org/obo/PATO_0001574"
+            },
+            {
+                "@type": "PropertyValue",
+                "name": "instrument model",
+                "propertyID": "http://purl.obolibrary.org/obo/MS_1000031"
+            }
+        ]
+    },
+    "parameterValue": [
+        {
+            "@type": "PropertyValue",
+            "name": "flow rate",
+            "value": "500",
+            "unitCode": "http://purl.obolibrary.org/obo/UO_0000271",
+            "unitText": "microliters per minute",
+            "propertyID": "http://purl.obolibrary.org/obo/PATO_0001574"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "instrument model",
+            "value": "3200 QTRAP",
+            "valueReference": "http://purl.obolibrary.org/obo/MS_1000651",
+            "propertyID": "http://purl.obolibrary.org/obo/MS_1000031"
+        }
+    ],
+    "agent": {
+        "@type": "Person",
+        "givenName": "Fred",
+        "familyName": "Sommer"
+    },
+    "endTime": "2012-04-23T18:25:43.511Z",
+    "object": [
+        {
+            "@type": [
+                "Sample"
+            ],
+            "name": "reactor_35_A"
+        }
+    ],
+    "result": [
+        {
+            "@type": [
+                "File"
+            ],
+            "@id": "/rawData/35_A.wiff",
+            "name": "/rawData/35_A.wiff"
+        }
+    ]
+}

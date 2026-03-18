@@ -1,0 +1,98 @@
+{
+    "@context": [
+        "http://schema.org/",
+        {
+            "LabProtocol": "https://bioschemas.org/LabProtocol",
+            "LabProcess": "https://bioschemas.org/LabProcess",
+            "executesLabProtocol": "https://bioschemas.org/properties/executesLabProtocol",
+            "parameterValue": "https://bioschemas.org/properties/parameterValue",
+            "additionalProperty": "https://bioschemas.org/properties/additionalProperty",
+            "parameter": "https://bioschemas.org/properties/parameter",
+            "labEquipment": "https://bioschemas.org/properties/labEquipment",
+            "intendedUse": "https://bioschemas.org/properties/intendedUse"
+        }
+    ],
+    "@type": [
+        "LabProcess"
+    ],
+    "name": "Cell Cultivation",
+    "executesProtocol": {
+        "@type": [
+            "LabProtocol"
+        ],
+        "intendedUse": {
+            "@type": "DefinedTerm",
+            "name": "growth protocol",
+            "termCode": "http://www.ebi.ac.uk/efo/EFO_0003789"
+        },
+        "labEquipment": {
+            "@type": [
+              "DefinedTerm"
+            ],
+            "alternateName": "Photon System Instruments, FMT 150/400-RB",
+            "name": "bioreactor",
+            "termCode": "http://purl.obolibrary.org/obo/OBI_0001046"
+        },
+        "parameter": [
+            {
+                "@type": "PropertyValue",
+                "name": "temperature",
+                "propertyID": "http://purl.obolibrary.org/obo/PATO_0000146"
+             },
+             {
+                "@type": "PropertyValue",
+                "name": "culture medium",
+                "propertyID": "http://purl.obolibrary.org/obo/OBI_0000079"
+             }
+        ]
+    },
+    "parameterValue": [
+        {
+            "@type": "PropertyValue",
+            "name": "temperature",
+            "value": "20",
+            "unitCode": "http://purl.obolibrary.org/obo/UO_0000027",
+            "unitText": "degree Celsius",
+            "propertyID": "http://purl.obolibrary.org/obo/PATO_0000146"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "culture medium",
+            "value": "TAP medium",
+            "valueReference": "https://bioregistry.io/dpbo:0000121",
+            "propertyID": "http://purl.obolibrary.org/obo/OBI_0000079"
+        }
+    ],
+    "agent": {
+        "@type": "Person",
+        "givenName": "Benedikt",
+        "familyName": "Venn"
+    },
+    "endTime": "2012-04-23T18:25:43.511Z",
+    "object": [
+        {
+            "@type": [
+                "Sample"
+            ],
+            "name": "chlamy_source",
+            "additionalProperty": [
+                {
+                    "@type": "PropertyValue",
+                    "name": "organism",
+                    "value": "Chlamydomonas reinhardtii",
+                    "propertyID": "http://purl.obolibrary.org/obo/OBI_0100026",
+                    "valueReference": "http://purl.obolibrary.org/obo/NCBITaxon_3055"
+                }
+            ]
+        }
+    ],
+    "result": [
+        {
+            "@type": [
+                "Sample"
+            ],
+            "name": "reactor_35_A",
+            "additionalProperty": []
+        }
+    ]
+}

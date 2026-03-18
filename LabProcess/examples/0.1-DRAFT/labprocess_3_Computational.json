@@ -1,0 +1,76 @@
+{
+    "@context": [
+        "http://schema.org/",
+        {
+            "LabProtocol": "https://bioschemas.org/LabProtocol",
+            "LabProcess": "https://bioschemas.org/LabProcess",
+            "executesLabProtocol": "https://bioschemas.org/properties/executesLabProtocol",
+            "parameterValue": "https://bioschemas.org/properties/parameterValue",
+            "additionalProperty": "https://bioschemas.org/properties/additionalProperty",
+            "parameter": "https://bioschemas.org/properties/parameter",
+            "labEquipment": "https://bioschemas.org/properties/labEquipment",
+            "intendedUse": "https://bioschemas.org/properties/intendedUse"
+        }
+    ],
+    "@type": [
+        "LabProcess"
+    ],
+    "name": "MS Processing",
+    "executesProtocol": {
+        "@type": [
+            "LabProtocol"
+        ],
+        "intendedUse": {
+            "@type": "DefinedTerm",
+            "name": "mass spectrometry analysis",
+            "termCode": "http://purl.obolibrary.org/obo/OBI_0200085"
+        },
+        "labEquipment": {
+            "@type": [
+              "DefinedTerm"
+            ],
+            "name": "computer",
+            "termCode": "http://purl.obolibrary.org/obo/OBI_0400107"
+        },
+        "parameter": [
+            {
+                "@type": "PropertyValue",
+                "name": "quantitation software name",
+                "propertyID": "http://purl.obolibrary.org/obo/MS_1001139"
+             }
+        ]
+    },
+    "parameterValue": [
+        {
+            "@type": "PropertyValue",
+            "name": "quantitation software name",
+            "value": "MaxQuant",
+            "valueReference": "http://purl.obolibrary.org/obo/MS_1001583",
+            "propertyID": "http://purl.obolibrary.org/obo/MS_1001139"
+        }
+    ],
+    "agent": {
+        "@type": "Person",
+        "givenName": "David",
+        "familyName": "Zimmer"
+    },
+    "endTime": "2012-04-23T18:25:43.511Z",
+    "object": [
+        {
+            "@type": [
+                "File"
+            ],
+            "@id": "/rawData/35_A.wiff",
+            "name": "/rawData/35_A.wiff"
+        }
+    ],
+    "result": [
+        {
+            "@type": [
+                "File"
+            ],
+            "@id": "/results/35_A.tsv",
+            "name": "/results/35_A.tsv"
+        }
+    ]
+}
