@@ -27,7 +27,7 @@
     {
       "@id": "bioschemastypesdrafts:scientificName",
       "@type": "rdf:Property",
-      "rdfs:comment": "The full scientific name (order, family, subfamily, genus, specific Epithet).",
+      "rdfs:comment": "The full scientific name (order, family, subfamily, genus, specificEpithet).",
       "rdfs:label": "scientificName",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
       "schema:rangeIncludes": [
@@ -42,7 +42,7 @@
     {
       "@id": "bioschemastypesdrafts:anatomicalSystem",
       "@type": "rdf:Property",
-      "rdfs:comment": "Indicate the anatomical system from which the sample is collect, e.g. circulatory, digestive, endocrine, immune and other systems.",
+      "rdfs:comment": "Indicate the anatomical system from which the sample was collected, e.g. circulatory, digestive, endocrine, immune and other systems.",
       "rdfs:label": "anatomicalSystem",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
       "schema:rangeIncludes": [
@@ -60,7 +60,7 @@
     {
       "@id": "bioschemastypesdrafts:anatomicalStructure",
       "@type": "rdf:Property",
-      "rdfs:comment": "Indicate the organ, tissues the sample was collected from.",
+      "rdfs:comment": "Indicate the organ or tissues the sample was collected from.",
       "rdfs:label": "anatomicalStructure",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:BioSample"},
       "schema:rangeIncludes": [
