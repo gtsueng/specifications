@@ -18,7 +18,7 @@
     {
       "@id": "bioschemastypesdrafts:additionalProperty",
       "@type": "rdf:Property",
-      "rdfs:comment": "A property-value pair representing an additional characteristics of the entity, e.g. \u201cOrganism: Homo sapiens\u201d or \u201ctissue type: leaf\u201d. For details of how to use PropertyValue see below.",
+      "rdfs:comment": "A property-value pair representing an additional characteristic of the entity, that is not representable by an existing property.",
       "rdfs:label": "additionalProperty",
       "schema:domainIncludes": {
         "@id": "bioschemastypesdrafts:Sample"
@@ -98,7 +98,7 @@
     {
       "@id": "bioschemastypesdrafts:dateModified",
       "@type": "rdf:Property",
-      "rdfs:comment": "Date sample record was last updated.",
+      "rdfs:comment": "The date sample record was last updated.",
       "rdfs:label": "dateModified",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -188,7 +188,7 @@
     {
       "@id": "bioschemastypesdrafts:contributor",
       "@type": "rdf:Property",
-      "rdfs:comment": "Person or organization that contributes to the work.",
+      "rdfs:comment": "A person or organization that contributes to the work.",
       "rdfs:label": "contributor",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
@@ -203,7 +203,7 @@
     {
       "@id": "bioschemastypesdrafts:contactPoint",
       "@type": "rdf:Property",
-      "rdfs:comment": "Person or organization that can be contacted for more information or support. ",
+      "rdfs:comment": "A person or organization that can be contacted for more information or support.",
       "rdfs:label": "contactPoint",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
