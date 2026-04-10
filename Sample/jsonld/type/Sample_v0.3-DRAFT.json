@@ -98,7 +98,7 @@
     {
       "@id": "bioschemastypesdrafts:dateModified",
       "@type": "rdf:Property",
-      "rdfs:comment": "The date sample record was last updated.",
+      "rdfs:comment": "The date the sample record was last updated.",
       "rdfs:label": "dateModified",
       "schema:domainIncludes": {"@id": "bioschemastypesdrafts:Sample"},
       "schema:rangeIncludes": [
