@@ -11,7 +11,7 @@ on:
 #    types: [opened, reopened]
 
 env:
-  GH_TOKEN: ${{ secrets.Sahar_Workflows_Token }}
+  GH_TOKEN: ${{ secrets.BS_GH_TOKEN }}
 
 # inputs:
 #   branch-name: 
@@ -51,7 +51,7 @@ jobs:
 
       - name: Checkout the DDE repo
         env:
-          GITHUB_TOKEN: ${{ secrets.Sahar_Workflows_Token }}
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: | 
           git clone https://user:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas-dde
           cd bioschemas-dde 
@@ -60,7 +60,7 @@ jobs:
 
       - name: Checkout the Website repo
         env:
-          GITHUB_TOKEN: ${{ secrets.Sahar_Workflows_Token }}
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: | 
           git clone https://user:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io
           cd bioschemas.github.io
@@ -86,17 +86,17 @@ jobs:
         uses: oleksiyrudenko/gha-git-credentials@v2-latest
         with:
           path: bioschemas.github.io
-          email: sahar.frikha1@gmail.com
-          name: sahar-frikha
-          actor: sahar-frikha
-          token: '${{secrets.Sahar_Workflows_Token}}'
+          email: alban.gaignard@univ-nantes.fr
+          name: alban.gaignard
+          actor: alban.gaignard
+          token: '${{secrets.BS_GH_TOKEN}}'
 
       - name: Commit and Push the changes in the website
         run: | 
           sleep 5
           cd bioschemas.github.io
-          git config user.name "sahar-frikha"
-          git config user.email "sahar.frikha1@gmail.com"
+          git config user.name "alban.gaignard"
+          git config user.email "alban.gaignard@univ-nantes.fr"
           git status
           git add .
           git commit -m "Updating Profile"
@@ -111,8 +111,8 @@ jobs:
       - name: Commit and Push the changes in the DDE repository
         run: | 
           cd bioschemas-dde
-          git config user.name "sahar-frikha"
-          git config user.email "sahar.frikha1@gmail.com"
+          git config user.name "alban.gaignard"
+          git config user.email "alban.gaignard@univ-nantes.fr"
           git status
           git add .
           git commit -m "Updating Profile"
