@@ -90,31 +90,34 @@ jobs:
       - name: Commit and Push the changes in the website
         env:
           GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
-        run: | 
-          sleep 5
+        run: |
           cd bioschemas.github.io
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git status
           git add .
-          git diff --cached --quiet && exit 0
-          git commit -m "Updating Profile"
-          git push --set-upstream -u origin $WEBSITE_BRANCH
-          git branch -vv
-          git ls-remote --heads origin
-      
+          if git diff --cached --quiet; then
+            echo "No changes to commit, skipping push."
+            echo "CHANGES_PUSHED=false" >> $GITHUB_ENV
+          else
+            git commit -m "Updating Profile"
+            git push --set-upstream -u origin $WEBSITE_BRANCH
+            echo "CHANGES_PUSHED=true" >> $GITHUB_ENV
+          fi
+
       - name: Create a pull request
+        if: env.CHANGES_PUSHED == 'true'
         env:
-          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: |
-          sleep 30
           cd bioschemas.github.io
-          #git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
-          git branch --show-current
-          git status
-          git branch -vv
-          gh pr create --title "Auto-Rendering Profile" --head $WEBSITE_BRANCH --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
+          gh pr create \
+            --repo BioSchemas/bioschemas.github.io \
+            --title "Auto-Rendering Profile" \
+            --head $WEBSITE_BRANCH \
+            --base master \
+            --body "This pull request has been created by a github action, after adding/updating a profile in the specifications repo."
       
       - name: Commit and Push the changes in the DDE repository
         env:
