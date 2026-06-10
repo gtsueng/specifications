@@ -13,11 +13,6 @@ on:
 env:
   GH_TOKEN: ${{ secrets.BS_GH_TOKEN }}
 
-# inputs:
-#   branch-name: 
-#     description: $`date +%Y_%m_%d-%H_%M_%S`
-#     required: true
-
 jobs:
   generate-profile:
     runs-on: ubuntu-latest
