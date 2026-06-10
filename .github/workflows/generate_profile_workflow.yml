@@ -88,11 +88,10 @@ jobs:
           cd bioschemas.github.io
           git config user.name "albangaignard"
           git config user.email "alban.gaignard@univ-nantes.fr"
-          git remote set-url origin https://x-access-token:${{ secrets.BS_GH_TOKEN }}@github.com/BioSchemas/bioschemas.github.io.git
           git status
           git add .
           git commit -m "Updating Profile"
-          git push --set-upstream -u origin "$(git branch --show-current)"
+          git push --set-upstream origin "$(git branch --show-current)"
       
       - name: Create a pull request
         run: |
