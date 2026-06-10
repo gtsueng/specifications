@@ -112,6 +112,9 @@ jobs:
           sleep 30
           cd bioschemas.github.io
           git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
+          git branch --show-current
+          git status
+          git branch -vv
           gh pr create --title "Auto-Rendering Profile" --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
       
       - name: Commit and Push the changes in the DDE repository
