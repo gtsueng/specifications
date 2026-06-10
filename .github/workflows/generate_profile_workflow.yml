@@ -24,11 +24,11 @@ jobs:
 
     steps: 
 
-      - name: Check auth status
+      - name: Verify token works
         env:
           GH_TOKEN: ${{ secrets.MY_GH_TOKEN }}
         run: |
-          gh auth status
+          gh api user
           
       - name: Checkout Spec Repo and Retreive the Preceding Commit
         uses: actions/checkout@v3
