@@ -74,6 +74,8 @@ jobs:
           ls
 
       - name: Checkout a new branch - Website repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: |
           cd bioschemas.github.io
           git pull
@@ -89,28 +91,35 @@ jobs:
           python ./.github/workflows/profile_generation_script.py ${{steps.changed-files.outputs.all_changed_files}} bioschemas.github.io
       
       - name: Commit and Push the changes in the website
+        env:
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: | 
           sleep 5
           cd bioschemas.github.io
-          git config user.name "albangaignard"
-          git config user.email "alban.gaignard@univ-nantes.fr"
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git status
           git add .
+          git diff --cached --quiet && exit 0
           git commit -m "Updating Profile"
-          git diff --cached --quiet
           git push --set-upstream origin "$(git branch --show-current)"
       
       - name: Create a pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: |
           sleep 30
           cd bioschemas.github.io
           gh pr create --title "Auto-Rendering Profile" --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
       
       - name: Commit and Push the changes in the DDE repository
+        env:
+          GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: | 
           cd bioschemas-dde
-          git config user.name "albangaignard"
-          git config user.email "alban.gaignard@univ-nantes.fr"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git status
           git add .
           git commit -m "Updating Profile"
