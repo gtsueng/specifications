@@ -104,6 +104,8 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Updating Profile"
           git push --set-upstream origin "$(git branch --show-current)"
+          git branch -vv
+          git ls-remote --heads origin
       
       - name: Create a pull request
         env:
@@ -111,7 +113,7 @@ jobs:
         run: |
           sleep 30
           cd bioschemas.github.io
-          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
+          #git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
           git branch --show-current
           git status
           git branch -vv
