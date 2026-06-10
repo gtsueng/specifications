@@ -24,6 +24,12 @@ jobs:
 
     steps: 
 
+      - name: Check auth status
+        env:
+          GH_TOKEN: ${{ secrets.MY_GH_TOKEN }}
+        run: |
+          gh auth status
+          
       - name: Checkout Spec Repo and Retreive the Preceding Commit
         uses: actions/checkout@v3
         with:
