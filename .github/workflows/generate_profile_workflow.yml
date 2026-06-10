@@ -97,6 +97,7 @@ jobs:
           git status
           git add .
           git commit -m "Updating Profile"
+          git diff --cached --quiet
           git push --set-upstream origin "$(git branch --show-current)"
       
       - name: Create a pull request
