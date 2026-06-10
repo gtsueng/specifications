@@ -111,6 +111,7 @@ jobs:
         run: |
           sleep 30
           cd bioschemas.github.io
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
           gh pr create --title "Auto-Rendering Profile" --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
       
       - name: Commit and Push the changes in the DDE repository
@@ -118,6 +119,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: | 
           cd bioschemas-dde
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git status
