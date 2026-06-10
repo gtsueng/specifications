@@ -87,15 +87,15 @@ jobs:
         with:
           path: bioschemas.github.io
           email: alban.gaignard@univ-nantes.fr
-          name: alban.gaignard
-          actor: alban.gaignard
+          name: albangaignard
+          actor: albangaignard
           token: '${{secrets.BS_GH_TOKEN}}'
 
       - name: Commit and Push the changes in the website
         run: | 
           sleep 5
           cd bioschemas.github.io
-          git config user.name "alban.gaignard"
+          git config user.name "albangaignard"
           git config user.email "alban.gaignard@univ-nantes.fr"
           git status
           git add .
@@ -111,7 +111,7 @@ jobs:
       - name: Commit and Push the changes in the DDE repository
         run: | 
           cd bioschemas-dde
-          git config user.name "alban.gaignard"
+          git config user.name "albangaignard"
           git config user.email "alban.gaignard@univ-nantes.fr"
           git status
           git add .
