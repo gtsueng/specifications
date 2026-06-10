@@ -79,7 +79,9 @@ jobs:
         run: |
           cd bioschemas.github.io
           git pull
-          git checkout -b `date +%Y_%m_%d-%H_%M`
+          BRANCH_NAME=`date +%Y_%m_%d-%H_%M`
+          git checkout -b $BRANCH_NAME
+          echo "WEBSITE_BRANCH=$BRANCH_NAME" >> $GITHUB_ENV
           cd ..
 
       - name: Execute the config files update Python Script
@@ -103,7 +105,7 @@ jobs:
           git add .
           git diff --cached --quiet && exit 0
           git commit -m "Updating Profile"
-          git push --set-upstream origin "$(git branch --show-current)"
+          git push --set-upstream -u origin $WEBSITE_BRANCH
           git branch -vv
           git ls-remote --heads origin
       
@@ -117,7 +119,7 @@ jobs:
           git branch --show-current
           git status
           git branch -vv
-          gh pr create --title "Auto-Rendering Profile" --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
+          gh pr create --title "Auto-Rendering Profile" --head $WEBSITE_BRANCH --body "This pull request has been created by a guithub action, after adding/updating a profile in the specifications repo."
       
       - name: Commit and Push the changes in the DDE repository
         env:
