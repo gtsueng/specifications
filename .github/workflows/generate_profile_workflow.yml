@@ -82,25 +82,17 @@ jobs:
         run: |
           python ./.github/workflows/profile_generation_script.py ${{steps.changed-files.outputs.all_changed_files}} bioschemas.github.io
       
-      - name: Setup the Github TOKEN
-        uses: oleksiyrudenko/gha-git-credentials@v2-latest
-        with:
-          path: bioschemas.github.io
-          email: alban.gaignard@univ-nantes.fr
-          name: albangaignard
-          actor: albangaignard
-          token: '${{secrets.BS_GH_TOKEN}}'
-
       - name: Commit and Push the changes in the website
         run: | 
           sleep 5
           cd bioschemas.github.io
           git config user.name "albangaignard"
           git config user.email "alban.gaignard@univ-nantes.fr"
+          git remote set-url origin https://x-access-token:${{ secrets.BS_GH_TOKEN }}@github.com/BioSchemas/bioschemas.github.io.git
           git status
           git add .
           git commit -m "Updating Profile"
-          git push --set-upstream -u origin `date +%Y_%m_%d-%H_%M`
+          git push --set-upstream -u origin "$(git branch --show-current)"
       
       - name: Create a pull request
         run: |
