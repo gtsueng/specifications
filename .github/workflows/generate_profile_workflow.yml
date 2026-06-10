@@ -26,7 +26,7 @@ jobs:
 
       - name: Verify token works
         env:
-          GH_TOKEN: ${{ secrets.MY_GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.BS_GH_TOKEN }}
         run: |
           gh api user
           
