@@ -127,15 +127,19 @@ jobs:
       - name: Commit and Push the changes in the DDE repository
         env:
           GITHUB_TOKEN: ${{ secrets.BS_GH_TOKEN }}
-        run: | 
+        run: |
           cd bioschemas-dde
-          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas.github.io.git
+          git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/BioSchemas/bioschemas-dde.git
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git status
           git add .
-          git commit -m "Updating Profile"
-          git push origin -f main
+          if git diff --cached --quiet; then
+            echo "No changes to commit, skipping push."
+          else
+            git commit -m "Updating Profile"
+            git push origin -f main
+          fi
 
       - name: End Workflow
         run: |
