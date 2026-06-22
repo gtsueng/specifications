@@ -1,8 +1,8 @@
 {
   "@context": {
     "schema": "http://schema.org/",
-    "bioschemasdrafts": "https://discovery.biothings.io/ns/bioschemasdrafts/",
     "bioschemas": "https://discovery.biothings.io/ns/bioschemas/",
+    "bioschemasdrafts": "https://discovery.biothings.io/ns/bioschemasdrafts/",
     "owl": "http://www.w3.org/2002/07/owl/"
   },
   "@graph": [
