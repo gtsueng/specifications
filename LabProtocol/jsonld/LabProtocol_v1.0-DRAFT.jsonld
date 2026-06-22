@@ -11,8 +11,8 @@
     "bioschemasdeprecated": "https://discovery.biothings.io/ns/bioschemasdeprecated/",
     "dct": "http://purl.org/dc/terms/",
     "@dateModified": "06/27/2025, 09:23:17",
-    "dwc": "http://rs.tdwg.org/dwc/terms/",
     "ppeo:hasGrowthFacility": "http://purl.org/ppeo/PPEO.owl#hasGrowthFacility",
+    "dwc": "http://rs.tdwg.org/dwc/terms/",
     "labprotocolTempForRelease": "https://discovery.biothings.io/ns/labprotocolTempForRelease/"
   },
   "@graph": [
