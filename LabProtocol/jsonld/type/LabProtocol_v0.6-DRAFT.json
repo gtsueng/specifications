@@ -14,7 +14,7 @@
     {
       "@id": "bioschemastypesdrafts:LabProtocol",
       "@type": "rdfs:Class",
-      "rdfs:comment": "A lab protocol is a prospective description of a sequence of tasks and operations to be performed during experimental research in wet- or dry-labs. Version: v1.0 Changelog: * Add parameter attribute with Range PropertyValue for better conformance with LabProcess. Prepared by: Florian Wetzels and H. Lukas Weil",
+      "rdfs:comment": "A lab protocol is a prospective description of a sequence of tasks and operations to be performed during experimental research in wet- or dry-labs. Version: v0.6 Changelog: * Add parameter attribute with Range PropertyValue for better conformance with LabProcess. Prepared by: Florian Wetzels and H. Lukas Weil",
       "rdfs:label": "LabProtocol",
       "rdfs:subClassOf": {
         "@id": "schema:HowTo"
