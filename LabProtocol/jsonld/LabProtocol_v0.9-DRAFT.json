@@ -19,7 +19,7 @@
     {
       "@id": "labprotocolTempForRelease:LabProtocol",
       "@type": "rdfs:Class",
-      "rdfs:comment": "Bioschemas profile for annotating a prospective description of experimental tasks and operations, given as a LabProtocol objects. Version 1.0-DRAFT, prepared by: Florian Wetzels and H. Lukas Weil",
+      "rdfs:comment": "Bioschemas profile for annotating a prospective description of experimental tasks and operations, given as a LabProtocol objects. Version 0.9-DRAFT, prepared by: Florian Wetzels and H. Lukas Weil",
       "rdfs:label": "LabProtocol",
       "rdfs:subClassOf": {
         "@id": "bioschemasdrafts:LabProtocol"
