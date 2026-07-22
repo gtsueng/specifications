@@ -581,6 +581,9 @@
       "schema:rangeIncludes": [
         {
           "@id": "schema:Boolean"
+        },
+        {
+          "@id": "schema:Enumeration"
         }
       ]
     }
