@@ -405,6 +405,16 @@ def generate_property(
                     new_p["type"] = "bioschemas"
                 else:
                     new_p["type"] = p.split(":")[0]
+
+    # Fallback: use an "@id" declared on the property inside $validation,
+    # e.g. "@id": "bioschemastypesdrafts:sampleType", when no rdf:Property
+    # node in the @graph defined it.
+    if new_p["type"] == "" and isinstance(prop.get("@id"), str):
+        prefix = prop["@id"].split(":")[0] if ":" in prop["@id"] else ""
+        if "bioschemas" in prefix:
+            new_p["type"] = "bioschemas"
+        elif prefix and prefix != "schema":
+            new_p["type"] = prefix
     t = new_p["type"]
     print(Fore.GREEN + Style.DIM + f"Property type : {t}" + Style.RESET_ALL)
 
